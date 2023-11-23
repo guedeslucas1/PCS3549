@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/Main/Main.gd" type="Script" id=2]
+
+[node name="Main" type="Node"]
+script = ExtResource( 2 )
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="MobTimer" to="." method="mob_timer_timeout"]
