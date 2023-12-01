@@ -1,8 +1,16 @@
-extends KinematicBody2D
+extends Area2D
 
-export var velocity = Vector2(0, 0)
+# global variables
+export var velocity = Vector2(500, 0)
+var player_sword_is_on = false
+var inside_sword_area
 
-# Called when the node enters the scene tree for the first time.
+func sword_on():
+	player_sword_is_on = true
+
+func sword_off():
+	player_sword_is_on = false
+
 func _ready():
 	$AnimatedSprite.animation = "Walk"
 	$AnimatedSprite.flip_h = (velocity.x < 0);
@@ -11,4 +19,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move_and_slide(velocity)
+	if inside_sword_area and player_sword_is_on:
+		queue_free()
+	position += velocity*delta
+	
+	
+func _on_Area2D_area_entered(area):
+	if area.get_name() == "SwordArea":
+		inside_sword_area = true
+	#print(area)

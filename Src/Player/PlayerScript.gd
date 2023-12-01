@@ -1,40 +1,37 @@
 extends Area2D
 
-signal hit
+signal swordAreaOn
+signal swordAreaOff
 
-var atacking = false 
-var looking_right = true
+export var dead = false
 
 func atack():
-	if not atacking:
-		# TODO: usar signal da AniamtedSprite para ver se a animação ja acabou
-		$AnimatedSprite.animation = "Atack"
-		$AnimatedSprite.flip_h = (not looking_right);
-		$AnimatedSprite.play()
-		atacking = true;
+	emit_signal("swordAreaOn")
+	$AnimatedSprite.animation = "Atack"
+	$AnimatedSprite.play()
 
 func end_animation():
+	emit_signal("swordAreaOff")
 	$AnimatedSprite.stop()
-	atacking = false;
 
 func _ready():
-	set_process(true)
-	$CollisionShape2D.disabled = false
+	pass
 
 func _process(delta):
 	if Input.is_action_pressed("atack"):
 		atack()
 		
 	if Input.is_action_pressed("look_right"):
-		looking_right = true
+		scale = Vector2(1,1)
 	elif Input.is_action_pressed("look_left"):
-		looking_right = false
+		scale = Vector2(-1,1)
 
 
-func _on_Player_body_entered(body):
+func _on_Player_area_entered(area):
 	print("Player hit!")
 	hide() # Player disappears after being hit.
-	emit_signal("hit")
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
+	dead = true
 
+
+func _on_SwordArea_area_entered(area):
+	pass # Replace with function body.
