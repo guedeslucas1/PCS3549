@@ -3,6 +3,7 @@ extends Node
 var screen_width = 1024
 var screen_height = 600
 
+var initial_scene = load("res://Src/Teka Inicial/initial_scene.tscn")
 var main_scene = load("res://Src/Main/Main.tscn")
 var enemy_scene = load("res://Src/Inimigo/Inimigo.tscn")
 var player_scene = load("res://Src/Player/Player.tscn")

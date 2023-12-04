@@ -1,9 +1,0 @@
-[gd_scene format=2]
-
-[node name="Label" type="Label"]
-margin_left = 453.0
-margin_top = 117.0
-margin_right = 560.0
-margin_bottom = 131.0
-text = "Ninja Cego kkkkk"
-align = 1
