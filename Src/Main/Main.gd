@@ -19,10 +19,10 @@ func mob_timer_timeout():
 	
 	var enemy_right = randf() > 0.5
 	
-	var enemy_pos = Vector2(0, screen_height/2)
+	var enemy_pos = Vector2(0, screen_height - 90)
 	if enemy_right:
 		enemy.velocity *= -1
-		enemy_pos = Vector2(screen_width, screen_height/2)
+		enemy_pos = Vector2(screen_width, screen_height - 90)
 	
 	enemy.position = enemy_pos
 	
@@ -37,7 +37,7 @@ func game_over():
 func new_game():
 	player = player_scene.instance()
 	add_child(player)
-	player.position = Vector2(screen_width/2, screen_height/2)
+	player.position = Vector2(screen_width/2, screen_height - 120)
 	$MobTimer.start()
 
 # Called when the node enters the scene tree for the first time.

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/407356__forthehorde68__fx_orc(2).mp3-24a1f73b66fd9f58d841dcd54d06be0d.mp3str"
+
+[deps]
+
+source_file="res://Src/Player/407356__forthehorde68__fx_orc(2).mp3"
+dest_files=[ "res://.import/407356__forthehorde68__fx_orc(2).mp3-24a1f73b66fd9f58d841dcd54d06be0d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

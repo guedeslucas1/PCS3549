@@ -4,11 +4,13 @@ signal swordAreaOn
 signal swordAreaOff
 
 export var dead = false
+onready var swordSound = $SwordSound
 
 func atack():
 	emit_signal("swordAreaOn")
 	$AnimatedSprite.animation = "Atack"
 	$AnimatedSprite.play()
+	swordSound.play()
 
 func end_animation():
 	emit_signal("swordAreaOff")

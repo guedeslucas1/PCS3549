@@ -17,6 +17,7 @@ func _ready():
 	$AnimatedSprite.animation = "Walk"
 	$AnimatedSprite.flip_h = (velocity.x < 0);
 	$AnimatedSprite.play()
+	$OrcSound.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
