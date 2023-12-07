@@ -17,6 +17,5 @@ func _on_StartBtn_pressed():
 func _on_OptionsBtn_pressed():
 	get_tree().change_scene("res://Src/Options/Control.tscn")
 
-
 func _on_QuitBtn_pressed():
 	get_tree().quit()

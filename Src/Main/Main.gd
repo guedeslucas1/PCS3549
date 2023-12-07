@@ -3,7 +3,7 @@ extends Node
 var screen_width = 1024
 var screen_height = 600
 
-var initial_scene = load("res://Src/Teka Inicial/initial_scene.tscn")
+var initial_scene = load("res://Src/TelaInicial/StartScreen.tscn")
 var main_scene = load("res://Src/Main/Main.tscn")
 var enemy_scene = load("res://Src/Inimigo/Inimigo.tscn")
 var player_scene = load("res://Src/Player/Player.tscn")
@@ -12,6 +12,7 @@ var player
 
 func mob_timer_timeout():
 	if player.dead == true:
+		get_tree().change_scene("res://Src/GameOver/GameOver.tscn")
 		return
 		
 	var enemy = enemy_scene.instance()
@@ -29,13 +30,20 @@ func mob_timer_timeout():
 	player.connect("swordAreaOn" , enemy, "sword_on")
 	player.connect("swordAreaOff", enemy, "sword_off")
 	add_child(enemy)
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
+	
+func game_over():
+	$MobTimer.stop()
+	
+func new_game():
 	player = player_scene.instance()
 	add_child(player)
 	player.position = Vector2(screen_width/2, screen_height/2)
 	$MobTimer.start()
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	new_game()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

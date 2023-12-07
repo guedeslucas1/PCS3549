@@ -2,6 +2,8 @@ extends Area2D
 
 # global variables
 export var velocity = Vector2(500, 0)
+export var score = 0
+
 var player_sword_is_on = false
 var inside_sword_area
 
@@ -21,6 +23,7 @@ func _ready():
 func _process(delta):
 	if inside_sword_area and player_sword_is_on:
 		queue_free()
+		score += 1
 	position += velocity*delta
 	
 	
