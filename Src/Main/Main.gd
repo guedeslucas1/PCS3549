@@ -1,5 +1,6 @@
 extends Node
 
+var contador = 0
 var screen_width = 1024
 var screen_height = 600
 
@@ -11,6 +12,8 @@ var player_scene = load("res://Src/Player/Player.tscn")
 var player
 
 func mob_timer_timeout():
+	
+	contador = contador + 1
 	if player.dead == true:
 		get_tree().change_scene("res://Src/GameOver/GameOver.tscn")
 		return
@@ -20,6 +23,7 @@ func mob_timer_timeout():
 	var enemy_right = randf() > 0.5
 	
 	var enemy_pos = Vector2(0, screen_height - 90)
+	enemy.velocity.x += contador*25
 	if enemy_right:
 		enemy.velocity *= -1
 		enemy_pos = Vector2(screen_width, screen_height - 90)
