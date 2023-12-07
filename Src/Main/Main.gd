@@ -1,6 +1,6 @@
 extends Node
 
-var contador = 0
+export var contador = 0
 var screen_width = 1024
 var screen_height = 600
 
@@ -10,8 +10,13 @@ var enemy_scene = load("res://Src/Inimigo/Inimigo.tscn")
 var player_scene = load("res://Src/Player/Player.tscn")
 
 var player
+var HUDScene
 
 func mob_timer_timeout():
+	if contador == 0:
+		$HUD.update_score(0)
+	else:
+		$HUD.update_score(contador)
 	
 	contador = contador + 1
 	if player.dead == true:
@@ -46,6 +51,7 @@ func new_game():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$SoundTrack.play()
 	new_game()
 	
 

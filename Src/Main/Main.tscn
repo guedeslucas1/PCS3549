@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Src/Main/Background.jpeg" type="Texture" id=1]
 [ext_resource path="res://Src/Main/Main.gd" type="Script" id=2]
 [ext_resource path="res://Src/Main/BackgroundBlack.png" type="Texture" id=3]
+[ext_resource path="res://SoundTrack.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Src/HUD/HUD.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -30,5 +32,11 @@ rotation = 3.14159
 scale = Vector2( 0.358664, 0.2985 )
 z_index = 1
 texture = ExtResource( 3 )
+
+[node name="SoundTrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [connection signal="timeout" from="MobTimer" to="." method="mob_timer_timeout"]

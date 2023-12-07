@@ -1,5 +1,6 @@
 extends Area2D
 
+
 # global variables
 export var velocity = Vector2(500, 0)
 export var score = 0
